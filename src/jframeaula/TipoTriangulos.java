@@ -45,7 +45,7 @@ public class TipoTriangulos extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -215,6 +215,7 @@ public class TipoTriangulos extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLado3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLado3ActionPerformed
