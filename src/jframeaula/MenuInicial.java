@@ -44,10 +44,12 @@ public class MenuInicial extends javax.swing.JFrame {
 
         jMenu1.setText("Formularios");
 
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/imgCalculadora.png"))); // NOI18N
         jMenuItem3.setText("Calculadora");
         jMenuItem3.addActionListener(this::jMenuItem3ActionPerformed);
         jMenu1.add(jMenuItem3);
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/imgTriangulo.png"))); // NOI18N
         jMenuItem2.setText("Tipo de Triangulo");
         jMenuItem2.addActionListener(this::jMenuItem2ActionPerformed);
         jMenu1.add(jMenuItem2);
@@ -70,7 +72,7 @@ public class MenuInicial extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 603, Short.MAX_VALUE)
+            .addGap(0, 237, Short.MAX_VALUE)
         );
 
         pack();
