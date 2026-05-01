@@ -4,6 +4,8 @@
  */
 package jframeaula;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 1017729
@@ -229,19 +231,23 @@ public class TipoTriangulos extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        double l1 = Double.parseDouble(jLado1.getText());
-        double l2 = Double.parseDouble(jLado2.getText());
-        double l3 = Double.parseDouble(jLado3.getText());
 
-        if (l1 == l2 && l2 == l3 && l1 == l3) {
-            jTipo.setText("Triangulo Equilátero!");
-        }
-        if (l1 != l2 && l2 != l3 && l1 != l3) {
-            jTipo.setText("Triangulo Escaleno!");
-        }
-        if (l1 == l2 || l2 == l3 || l1 == l2 || l2 == l3) {
-            jTipo.setText("Triangulo Isóceles!");
+        try {
+            double l1 = Double.parseDouble(jLado1.getText());
+            double l2 = Double.parseDouble(jLado2.getText());
+            double l3 = Double.parseDouble(jLado3.getText());
+            if (l1 == l2 && l2 == l3 && l1 == l3) {
+                jTipo.setText("Triangulo Equilátero!");
+            }
+            if (l1 != l2 && l2 != l3 && l1 != l3) {
+                jTipo.setText("Triangulo Escaleno!");
+            }
+            if (l1 == l2 || l2 == l3 || l1 == l2 || l2 == l3) {
+                jTipo.setText("Triangulo Isóceles!");
 
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Valores inválidos", "Erro",  JOptionPane.WARNING_MESSAGE);
         }
 
 
