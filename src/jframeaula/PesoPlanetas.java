@@ -5,6 +5,7 @@
 package jframeaula;
 
 import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -172,11 +173,16 @@ public class PesoPlanetas extends javax.swing.JFrame {
                 gravidade = 1.6;
                 break;
             default:
-                throw new AssertionError();
+                JOptionPane.showMessageDialog(null, "Erro na seleção de planetas");
+        }
+
+        
+        try {
+        jTPesoPlaneta.setText(String.valueOf(calculoPeso(gravidade)));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Digite um valor inteiro ou decimal");
         }
         
-        
-        jTPesoPlaneta.setText(String.valueOf(calculoPeso(gravidade)));
     }//GEN-LAST:event_jCalcularPesoActionPerformed
 
     private void jMenuPlanetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPlanetasActionPerformed
