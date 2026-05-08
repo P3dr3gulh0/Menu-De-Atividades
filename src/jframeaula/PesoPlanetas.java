@@ -23,8 +23,11 @@ public class PesoPlanetas extends javax.swing.JFrame {
     }
 
     public String calculoPeso(double gravidade) {
+        
         String StrpesoTerra = jTPesoTerra.getText();
-        double pesoTerra = Integer.parseInt(StrpesoTerra);
+        StrpesoTerra = converterVirgula(StrpesoTerra);
+        
+        double pesoTerra = Double.parseDouble(StrpesoTerra);
         
         double pesoPlaneta = (pesoTerra / 9.8) * gravidade;
         return limitarDecimal(pesoPlaneta);
@@ -39,6 +42,12 @@ public class PesoPlanetas extends javax.swing.JFrame {
         String valorTratado = df.format(valor);
 
         return valorTratado;
+    }
+    
+    public String converterVirgula(String valor){
+        String valorConvertido = valor.replace(",", ".");
+        
+        return valorConvertido;
     }
 
     /**
@@ -180,7 +189,7 @@ public class PesoPlanetas extends javax.swing.JFrame {
         try {
         jTPesoPlaneta.setText(String.valueOf(calculoPeso(gravidade)));
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Digite um valor inteiro ou decimal");
+            JOptionPane.showMessageDialog(null, "Digite um valor inteiro");
         }
         
     }//GEN-LAST:event_jCalcularPesoActionPerformed
