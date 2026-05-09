@@ -21,7 +21,6 @@ public class PesoPlanetas extends javax.swing.JFrame {
      */
     public PesoPlanetas() {
         initComponents();
-        iconePlanetas();
     }
 
     public String calculoPeso(double gravidade) {
@@ -50,12 +49,6 @@ public class PesoPlanetas extends javax.swing.JFrame {
         String valorConvertido = valor.replace(",", ".");
         
         return valorConvertido;
-    }
-    
-    public void iconePlanetas(){
-        ImageIcon icon = new ImageIcon("NetBeansProjects\\JframeAula\\src\\img\\imgTerra.png");
-        
-        jIconPlaneta.setIcon(icon);
     }
 
     /**
