@@ -35,6 +35,7 @@ public class MenuInicial extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
 
@@ -59,6 +60,10 @@ public class MenuInicial extends javax.swing.JFrame {
         jMenuItem4.setText("Peso em Planetas");
         jMenuItem4.addActionListener(this::jMenuItem4ActionPerformed);
         jMenu1.add(jMenuItem4);
+
+        jMenuItem5.setText("Configurações Jogo");
+        jMenuItem5.addActionListener(this::jMenuItem5ActionPerformed);
+        jMenu1.add(jMenuItem5);
 
         jMenuBar1.add(jMenu1);
 
@@ -102,7 +107,19 @@ public class MenuInicial extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
+        
+        PesoPlanetas pp = new PesoPlanetas();
+        
+        pp.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        
+        ConfiguracoesJogo cj = new ConfiguracoesJogo();
+        
+        cj.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,6 +155,7 @@ public class MenuInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private java.awt.MenuBar menuBar1;
     // End of variables declaration//GEN-END:variables
 }
