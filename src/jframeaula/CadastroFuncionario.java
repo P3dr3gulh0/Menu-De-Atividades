@@ -4,6 +4,7 @@
  */
 package jframeaula;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author 1017729
  */
 public class CadastroFuncionario extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CadastroFuncionario.class.getName());
 
     /**
@@ -20,6 +21,97 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     public CadastroFuncionario() {
         initComponents();
     }
+
+    public String beneficios() {
+        String beneficios = "";
+
+        if (ckbPlanodeSaúde.isSelected()) {
+            beneficios += "\n - Plano de Saúde";
+        }
+
+        if (ckbVA.isSelected()) {
+            beneficios += "\n - Vale Alimentação";
+        }
+
+        if (ckbVT.isSelected()) {
+            beneficios += "\n - Vale Transporte";
+        }
+
+        if (ckbHomeOffice.isSelected()) {
+            beneficios += "\n - Home Office";
+        }
+
+        return beneficios;
+    }
+
+    public String turno() {
+        String turno = "";
+
+        if (rbManha.isSelected()) {
+            turno = "Manhã";
+        }
+        if (rbTarde.isSelected()) {
+            turno = "Tarde";
+        }
+        if (rbNoite.isSelected()) {
+            turno = "Noite";
+        }
+        return turno;
+
+    }
+
+    public void validacao() {
+        String mensagem = "Por Favor, preencha o campo de ";
+
+        if (beneficios().isBlank()) {
+
+            mensagem += "beneficios";
+            JOptionPane.showMessageDialog(null, mensagem);
+            return;
+        }
+        if (turno().isBlank()) {
+            mensagem += "Turno";
+            JOptionPane.showMessageDialog(null, mensagem);
+            return;
+        }
+        if (tfName.getText().isBlank()) {
+            mensagem += "nome";
+            JOptionPane.showMessageDialog(null, mensagem);
+            return;
+        }
+    }
+
+    public String nivelStack() {
+
+        String nivel = "Nível: ";
+
+        if (slXp.getValue() <= 4) {
+            nivel += "Junior";
+        }
+        if (slXp.getValue() >= 4 && slXp.getValue() <= 7) {
+            nivel += "Pleno";
+        }
+        if (slXp.getValue() > 7) {
+            nivel += "Sênior";
+        }
+        return nivel;
+
+    }
+
+    public void salvarCadastro() {
+
+        validacao();
+        String mensagem = "";
+
+        mensagem += "Funcionario: " + tfName.getText() + "\n\n";
+        mensagem += "Setor: " + cbSetor.getSelectedItem() + "\n\n";
+        mensagem += "Turno: " + turno() + "\n\n";
+        mensagem += "Beneficios: " + beneficios() + "\n\n";
+        mensagem += "Experiencia: " + slXp.getValue() + "\n" + nivelStack();
+
+        JOptionPane.showMessageDialog(null, mensagem);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -167,12 +259,13 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 .addGap(8, 8, 8))
         );
 
+        jPanel6.setBackground(new java.awt.Color(51, 153, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel6.setText("Nível de Experiência");
 
-        slXp.setMajorTickSpacing(2);
+        slXp.setMajorTickSpacing(1);
         slXp.setMaximum(10);
         slXp.setPaintLabels(true);
         slXp.setPaintTicks(true);
@@ -302,54 +395,8 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        
-        String beneficios = "";
-        
-        if(ckbPlanodeSaúde.isSelected()){
-            beneficios += "\n - Plano de Saúde";
-        }
-        
-        if(ckbVA.isSelected()){
-            beneficios += "\n - Vale Alimentação";
-        }
-        
-        if(ckbVT.isSelected()){
-            beneficios += "\n - Vale Transporte";
-        }
-        
-        if(ckbHomeOffice.isSelected()){
-            beneficios += "\n - Home Office";
-        }
-        
-        String turno = "";
-        
-        if(rbManha.isSelected()){
-            turno = "Manhã";
-        }
-        if(rbTarde.isSelected()){
-            turno = "Tarde";
-        }
-        if(rbNoite.isSelected()){
-            turno = "Noite";
-        }
-        
-        String mensagem = "";
-        
-        mensagem += "Funcionario: "+ tfName.getText() + "\n\n";
-        mensagem += "Setor: "+ cbSetor.getSelectedItem() + "\n\n";
-        mensagem += "Turno: "+ turno + "\n\n";
-        mensagem += "Beneficios: "+ beneficios + "\n\n";
-        mensagem += "Experiencia: "+ slXp.getValue() + "\n";
-        
-        JOptionPane.showMessageDialog(null, mensagem);
-        
-        System.out.println(tfName.getText());
-        System.out.println(cbSetor.getSelectedItem());
-        System.out.println(turno);
-        System.out.println(beneficios);
-        System.out.println(slXp.getValue());
-        
+
+        salvarCadastro();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
