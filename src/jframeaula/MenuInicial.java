@@ -36,6 +36,7 @@ public class MenuInicial extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
 
@@ -64,6 +65,10 @@ public class MenuInicial extends javax.swing.JFrame {
         jMenuItem5.setText("Configurações Jogo");
         jMenuItem5.addActionListener(this::jMenuItem5ActionPerformed);
         jMenu1.add(jMenuItem5);
+
+        jMenuItem6.setText("Cadastro de Funcionario");
+        jMenuItem6.addActionListener(this::jMenuItem6ActionPerformed);
+        jMenu1.add(jMenuItem6);
 
         jMenuBar1.add(jMenu1);
 
@@ -121,6 +126,14 @@ public class MenuInicial extends javax.swing.JFrame {
         cj.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        
+        CadastroFuncionario cf = new CadastroFuncionario();
+        
+        cf.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -156,6 +169,7 @@ public class MenuInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private java.awt.MenuBar menuBar1;
     // End of variables declaration//GEN-END:variables
 }
