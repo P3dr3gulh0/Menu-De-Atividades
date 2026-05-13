@@ -59,26 +59,26 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         return turno;
 
     }
-
-    public void validacao() {
+    public boolean validacao() {
         String mensagem = "Por Favor, preencha o campo de ";
 
-        if (beneficios().isBlank()) {
-
-            mensagem += "beneficios";
-            JOptionPane.showMessageDialog(null, mensagem);
-            return;
-        }
-        if (turno().isBlank()) {
-            mensagem += "Turno";
-            JOptionPane.showMessageDialog(null, mensagem);
-            return;
-        }
         if (tfName.getText().isBlank()) {
             mensagem += "nome";
             JOptionPane.showMessageDialog(null, mensagem);
-            return;
+            return false;
         }
+        if (beneficios().isBlank()) {
+            mensagem += "beneficios";
+            JOptionPane.showMessageDialog(null, mensagem);
+            return false;
+        }
+        
+        if (turno().isBlank()) {
+            mensagem += "Turno";
+            JOptionPane.showMessageDialog(null, mensagem);
+            return false;
+        }
+        return true;
     }
 
     public String nivelStack() {
@@ -87,6 +87,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
         if (slXp.getValue() <= 4) {
             nivel += "Junior";
+            jLabel6.setBackground(Color.red);
         }
         if (slXp.getValue() >= 4 && slXp.getValue() <= 7) {
             nivel += "Pleno";
@@ -99,8 +100,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     }
 
     public void salvarCadastro() {
-
-        validacao();
+        
         String mensagem = "";
 
         mensagem += "Funcionario: " + tfName.getText() + "\n\n";
@@ -190,7 +190,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(cbSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,7 +241,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,7 +280,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(slXp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
         );
@@ -319,7 +319,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                     .addComponent(rbManha)
                     .addComponent(rbTarde)
                     .addComponent(rbNoite))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 19, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,7 +396,9 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
-        salvarCadastro();
+        if(validacao()){
+        salvarCadastro(); 
+        };
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
