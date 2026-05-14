@@ -24,7 +24,7 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
 
     public int escolha() {
 
-        int escolha = 10;
+        int escolha =0;
 
         if (rbPedra.isSelected()) {
             escolha = 0;
@@ -42,7 +42,6 @@ public class PedraPapelTesoura extends javax.swing.JFrame {
         Random random = new Random();
 
         int escolha = random.nextInt(3);
-        System.out.println(escolha);
         
         switch (escolha) {
             case 0:
