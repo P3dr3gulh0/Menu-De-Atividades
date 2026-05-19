@@ -37,6 +37,7 @@ public class MenuInicial extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
 
@@ -48,7 +49,7 @@ public class MenuInicial extends javax.swing.JFrame {
         jMenu1.setText("Formularios");
 
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/imgCalculadora.png"))); // NOI18N
-        jMenuItem3.setText("Calculadora");
+        jMenuItem3.setText("Calculadora Incrível");
         jMenuItem3.addActionListener(this::jMenuItem3ActionPerformed);
         jMenu1.add(jMenuItem3);
 
@@ -69,6 +70,10 @@ public class MenuInicial extends javax.swing.JFrame {
         jMenuItem6.setText("Cadastro de Funcionario");
         jMenuItem6.addActionListener(this::jMenuItem6ActionPerformed);
         jMenu1.add(jMenuItem6);
+
+        jMenuItem7.setText("Calculadora Normal");
+        jMenuItem7.addActionListener(this::jMenuItem7ActionPerformed);
+        jMenu1.add(jMenuItem7);
 
         jMenuBar1.add(jMenu1);
 
@@ -134,6 +139,14 @@ public class MenuInicial extends javax.swing.JFrame {
         cf.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        
+        CalculadoraNormal cn = new CalculadoraNormal();
+        cn.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -170,6 +183,7 @@ public class MenuInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private java.awt.MenuBar menuBar1;
     // End of variables declaration//GEN-END:variables
 }
