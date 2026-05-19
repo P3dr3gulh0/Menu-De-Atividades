@@ -14,6 +14,41 @@ public class CalculadoraNormal extends javax.swing.JFrame {
     private String operador = "";
     private String Strnum1 = "";
 
+    public String getConta() {
+        return conta;
+    }
+
+    public void setConta(String conta) {
+        this.conta = conta;
+    }
+
+    public String getOperador() {
+        return operador;
+    }
+
+    public void setOperador(String operador) {
+        this.operador = operador;
+    }
+
+    public String getStrnum1() {
+        return Strnum1;
+    }
+
+    public void setStrnum1(String Strnum1) {
+        this.Strnum1 = Strnum1;
+    }
+
+    public void limparTudo() {
+        setConta("");
+        jlEquacao.setText("");
+        setOperador("");
+    }
+
+    public void adicionarNumero(String numero) {
+        conta += numero;
+        jlEquacao.setText(conta);
+    }
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CalculadoraNormal.class.getName());
 
     /**
@@ -46,24 +81,21 @@ public class CalculadoraNormal extends javax.swing.JFrame {
                 resultado = num1 * num2;
                 break;
             case "/":
+                if (num2 == 0) {
+                    jlHistorico.setText("Erro!");
+                    return;
+                }
                 resultado = num1 / num2;
                 break;
             default:
-                throw new AssertionError();
+                return;
         }
-        jlEquacao.setText(String.valueOf(resultado));
+        
+        String strResultado = String.valueOf(resultado);
+        
+        jlEquacao.setText(strResultado);
+        conta = strResultado;
 
-    }
-
-    public void limpar() {
-        conta = "";
-        jlEquacao.setText("");
-    }
-
-    public void limparTudo() {
-        conta = "";
-        jlEquacao.setText("");
-        operador = "";
     }
 
     @SuppressWarnings("unchecked")
@@ -324,70 +356,82 @@ public class CalculadoraNormal extends javax.swing.JFrame {
 
     private void btValor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btValor2ActionPerformed
         // TODO add your handling code here:
-        conta += "2";
-        jlEquacao.setText(conta);
+        adicionarNumero("2");
     }//GEN-LAST:event_btValor2ActionPerformed
 
     private void btValor5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btValor5ActionPerformed
         // TODO add your handling code here:
-        conta += "5";
-        jlEquacao.setText(conta);
+        adicionarNumero("5");
     }//GEN-LAST:event_btValor5ActionPerformed
 
     private void btValor6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btValor6ActionPerformed
         // TODO add your handling code here:
-        conta += "6";
-        jlEquacao.setText(conta);
+        adicionarNumero("6");
     }//GEN-LAST:event_btValor6ActionPerformed
 
     private void btValor9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btValor9ActionPerformed
         // TODO add your handling code here:
-        conta += "9";
-        jlEquacao.setText(conta);
+        adicionarNumero("9");
+
     }//GEN-LAST:event_btValor9ActionPerformed
 
     private void btValor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btValor1ActionPerformed
         // TODO add your handling code here:
-        conta += "1";
-        jlEquacao.setText(conta);
+
+        adicionarNumero("1");
     }//GEN-LAST:event_btValor1ActionPerformed
 
     private void btOpMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOpMultActionPerformed
         // TODO add your handling code here:
-        operador = "x";
 
-        Strnum1 = jlEquacao.getText();
-        
-        limpar();
+        if ("".equals(getOperador()) || "x".equals(getOperador())) {
+            setOperador("x");
+
+            Strnum1 = jlEquacao.getText();
+
+            //Limpa
+            setConta("");
+            jlEquacao.setText("");
+        }
     }//GEN-LAST:event_btOpMultActionPerformed
 
     private void btOpSubtrairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOpSubtrairActionPerformed
         // TODO add your handling code here:
-        operador = "-";
 
-        Strnum1 = jlEquacao.getText();
-        limpar();
+        if ("".equals(getOperador()) || "-".equals(getOperador())) {
+
+            setOperador("-");;
+
+            Strnum1 = jlEquacao.getText();
+            //Limpa
+            setConta("");
+            jlEquacao.setText("");
+        }
     }//GEN-LAST:event_btOpSubtrairActionPerformed
 
     private void btDividirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDividirActionPerformed
         // TODO add your handling code here:
-        operador = "/";
+        if ("".equals(getOperador()) || "/".equals(getOperador())) {
 
-        Strnum1 = jlEquacao.getText();
-        limpar();
+            setOperador("/");
+
+            Strnum1 = jlEquacao.getText();
+            //Limpa
+            setConta("");
+            jlEquacao.setText("");
+        }
     }//GEN-LAST:event_btDividirActionPerformed
 
     private void btOpSomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOpSomaActionPerformed
-        //QUal operador
-        operador = "+";
 
-        Strnum1 = jlEquacao.getText();
-        limpar();
-        System.out.println(operador + conta);
+        if ("".equals(getOperador()) || !"+".equals(getOperador())) {
+            setOperador("+");
 
-        //Guardar o valor do visor Exemplo num1
-        //Lipar o visor
-
+            Strnum1 = jlEquacao.getText();
+            //Limpa
+            setConta("");
+            jlEquacao.setText("");
+        }
     }//GEN-LAST:event_btOpSomaActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
@@ -397,32 +441,27 @@ public class CalculadoraNormal extends javax.swing.JFrame {
 
     private void btValor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btValor3ActionPerformed
         // TODO add your handling code here:
-        conta += "3";
-        jlEquacao.setText(conta);
+        adicionarNumero("3");
     }//GEN-LAST:event_btValor3ActionPerformed
 
     private void btValor4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btValor4ActionPerformed
         // TODO add your handling code here:
-        conta += "4";
-        jlEquacao.setText(conta);
+        adicionarNumero("4");
     }//GEN-LAST:event_btValor4ActionPerformed
 
     private void btValor7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btValor7ActionPerformed
         // TODO add your handling code here:
-        conta += "7";
-        jlEquacao.setText(conta);
+        adicionarNumero("7");
     }//GEN-LAST:event_btValor7ActionPerformed
 
     private void btValor8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btValor8ActionPerformed
         // TODO add your handling code here:
-        conta += "8";
-        jlEquacao.setText(conta);
+        adicionarNumero("8");
     }//GEN-LAST:event_btValor8ActionPerformed
 
     private void btValor0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btValor0ActionPerformed
         // TODO add your handling code here:
-        conta += "0";
-        jlEquacao.setText(conta);
+        adicionarNumero("0");
     }//GEN-LAST:event_btValor0ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
@@ -432,6 +471,15 @@ public class CalculadoraNormal extends javax.swing.JFrame {
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         // TODO add your handling code here:
+
+        if (!conta.contains(".")) {
+            if ("".equals(getConta())) {
+                adicionarNumero("0.");
+            } else {
+                adicionarNumero(".");
+            }
+        }
+
     }//GEN-LAST:event_jButton15ActionPerformed
 
     /**
