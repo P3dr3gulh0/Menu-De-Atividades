@@ -10,16 +10,17 @@ package jframeaula;
  */
 public class CalculadoraNormal extends javax.swing.JFrame {
 
-    private String conta = "";
+    private String strNum1 = "";
     private String operador = "";
-    private String Strnum1 = "";
+    private String historico = "";
+    private String strNum2 = "";
 
-    public String getConta() {
-        return conta;
+    public String getStrNum1() {
+        return strNum1;
     }
 
-    public void setConta(String conta) {
-        this.conta = conta;
+    public void setStrNum1(String strNum1) {
+        this.strNum1 = strNum1;
     }
 
     public String getOperador() {
@@ -30,23 +31,12 @@ public class CalculadoraNormal extends javax.swing.JFrame {
         this.operador = operador;
     }
 
-    public String getStrnum1() {
-        return Strnum1;
+    public String getStrNum2() {
+        return strNum2;
     }
 
-    public void setStrnum1(String Strnum1) {
-        this.Strnum1 = Strnum1;
-    }
-
-    public void limparTudo() {
-        setConta("");
-        jlEquacao.setText("");
-        setOperador("");
-    }
-
-    public void adicionarNumero(String numero) {
-        conta += numero;
-        jlEquacao.setText(conta);
+    public void setStrNum2(String strNum2) {
+        this.strNum2 = strNum2;
     }
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CalculadoraNormal.class.getName());
@@ -58,14 +48,36 @@ public class CalculadoraNormal extends javax.swing.JFrame {
         initComponents();
     }
 
+    public void limparTudo() {
+        setStrNum1("");
+        jlEquacao.setText("");
+        setOperador("");
+    }
+
+    public void adicionarNumero(String numero) {
+        strNum1 += numero;
+        jlEquacao.setText(strNum1);
+    }
+
     public double conversao(String valor) {
         double valorTratado = Double.parseDouble(valor);
         return valorTratado;
     }
 
-    public void operacao(String operador, String Strnum1) {
+    public void decimal() {
+        if (!strNum1.contains(".")) {
+            if (getStrNum1().isBlank()) {
+                adicionarNumero("0.");
+            } else {
+                adicionarNumero(".");
+            }
+        }
+    }
 
-        double num1 = conversao(Strnum1);
+    public void operacao() {
+
+        String operador = getOperador();
+        double num1 = conversao(getStrNum1());
         double num2 = conversao(jlEquacao.getText());
 
         double resultado = 0;
@@ -90,11 +102,11 @@ public class CalculadoraNormal extends javax.swing.JFrame {
             default:
                 return;
         }
-        
+
         String strResultado = String.valueOf(resultado);
-        
+
         jlEquacao.setText(strResultado);
-        conta = strResultado;
+        setStrNum1(strResultado);
 
     }
 
@@ -384,13 +396,13 @@ public class CalculadoraNormal extends javax.swing.JFrame {
     private void btOpMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOpMultActionPerformed
         // TODO add your handling code here:
 
-        if ("".equals(getOperador()) || "x".equals(getOperador())) {
+        if ("".equals(getOperador()) || !"x".equals(getOperador())) {
             setOperador("x");
 
-            Strnum1 = jlEquacao.getText();
+            setStrNum2(jlEquacao.getText());
 
             //Limpa
-            setConta("");
+            setStrNum1(jlEquacao.getText());
             jlEquacao.setText("");
         }
     }//GEN-LAST:event_btOpMultActionPerformed
@@ -400,11 +412,9 @@ public class CalculadoraNormal extends javax.swing.JFrame {
 
         if ("".equals(getOperador()) || "-".equals(getOperador())) {
 
-            setOperador("-");;
-
-            Strnum1 = jlEquacao.getText();
+            setOperador("-");
             //Limpa
-            setConta("");
+            setStrNum1(jlEquacao.getText());
             jlEquacao.setText("");
         }
     }//GEN-LAST:event_btOpSubtrairActionPerformed
@@ -415,9 +425,8 @@ public class CalculadoraNormal extends javax.swing.JFrame {
 
             setOperador("/");
 
-            Strnum1 = jlEquacao.getText();
             //Limpa
-            setConta("");
+            setStrNum1(jlEquacao.getText());
             jlEquacao.setText("");
         }
     }//GEN-LAST:event_btDividirActionPerformed
@@ -426,10 +435,8 @@ public class CalculadoraNormal extends javax.swing.JFrame {
 
         if ("".equals(getOperador()) || !"+".equals(getOperador())) {
             setOperador("+");
-
-            Strnum1 = jlEquacao.getText();
             //Limpa
-            setConta("");
+            setStrNum1(jlEquacao.getText());
             jlEquacao.setText("");
         }
     }//GEN-LAST:event_btOpSomaActionPerformed
@@ -466,20 +473,12 @@ public class CalculadoraNormal extends javax.swing.JFrame {
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
-        operacao(operador, Strnum1);
+        operacao();
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         // TODO add your handling code here:
-
-        if (!conta.contains(".")) {
-            if ("".equals(getConta())) {
-                adicionarNumero("0.");
-            } else {
-                adicionarNumero(".");
-            }
-        }
-
+        decimal();
     }//GEN-LAST:event_jButton15ActionPerformed
 
     /**
